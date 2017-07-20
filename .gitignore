@@ -318,3 +318,7 @@ Session.vim
 *~
 # auto-generated tag files
 tags
+
+maildir/
+data/
+*.tgz
