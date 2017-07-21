@@ -236,6 +236,7 @@ DEPENDENCIES
   jekyll
   jekyll-assets
   jekyll-sitemap
+  jekyll-theme-cayman
   mini_magick
   sass
   uglifier

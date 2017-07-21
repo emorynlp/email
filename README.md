@@ -2,7 +2,7 @@
 
 # enron
 
-This goal of this project is to convert the original [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) into json format.
+The goal of this project is to convert the original [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) into mordern format for investigation.
 
 # Environment Setup:
 
