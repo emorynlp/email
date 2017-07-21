@@ -207,7 +207,7 @@ GitHub.sublime-settings
 ### Eclipse template
 
 .metadata
-bin/
+
 tmp/
 *.tmp
 *.bak
