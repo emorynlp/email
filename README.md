@@ -1,12 +1,10 @@
-# email-mining
-
-# enron
+# Email Mining
 
 The goal of this project is to convert the original [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) into mordern format for investigation.
 
 # Environment Setup:
 
-Python verison >= 3.6.0
+Python verison >= 3.6
 
 ```
 git clone git@github.com:emorynlp/email-mining.git
