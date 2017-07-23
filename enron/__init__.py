@@ -15,4 +15,6 @@
 # ========================================================================
 __author__ = 'Gary Lai'
 
-from parser.enron_parser import EnronParser
+from enron.parser import Parser
+from enron.downloader import Downloader
+

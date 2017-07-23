@@ -6,7 +6,8 @@ import time
 
 header_parser = HeaderParser()
 
-class EnronParser():
+
+class Parser():
     def __init__(self):
         self.re_forward = re.compile(r'(.*-.*Forwarded.*)')
         self.re_forward_ = re.compile(r'(.*---------------------------)')
@@ -26,19 +27,19 @@ class EnronParser():
             if ' ' not in receivers[0].strip():
                 is_merge = True;
         if is_merge:
-            return([receivers[0] + ',' + receivers[1]])
+            return ([receivers[0] + ',' + receivers[1]])
         else:
-            return(receivers)
+            return (receivers)
 
     def split_receivers(self, receiver_type, d):
         if ';' in d[receiver_type]:
-            d[receiver_type] = d[receiver_type].replace("\r", "")\
-                .replace("\n", "")\
-                .replace("\t","").strip().split(';')
+            d[receiver_type] = d[receiver_type].replace("\r", "") \
+                .replace("\n", "") \
+                .replace("\t", "").strip().split(';')
         else:
-            d[receiver_type] = d[receiver_type].replace("\r", "")\
-                .replace("\n", "")\
-                .replace("\t","").strip().split(',')
+            d[receiver_type] = d[receiver_type].replace("\r", "") \
+                .replace("\n", "") \
+                .replace("\t", "").strip().split(',')
         return d
 
     def get_headers(self, text):
@@ -50,7 +51,7 @@ class EnronParser():
                 d[receiver_type] = self.merge(d[receiver_type])
             except KeyError:
                 pass
-        return  d
+        return d
 
     def get_body(self, text):
         content = email.message_from_string(text)
@@ -122,11 +123,11 @@ class EnronParser():
 
         while True:
             try:
-               if ';' in thread.splitlines()[idx + i]:
-                   emails = thread.splitlines()[idx + i].split(';')
-               else:
-                   emails = thread.splitlines()[idx + i].split(',')
-               emails = self.merge(emails)
+                if ';' in thread.splitlines()[idx + i]:
+                    emails = thread.splitlines()[idx + i].split(';')
+                else:
+                    emails = thread.splitlines()[idx + i].split(',')
+                emails = self.merge(emails)
             except IndexError:
                 break
 
@@ -135,12 +136,12 @@ class EnronParser():
                 skip_idx.append(idx + i)
             i += 1
             try:
-               if ';' in thread.splitlines()[idx + i]:
-                   emails = thread.splitlines()[idx + i].split(';')
-               else:
-                   emails = thread.splitlines()[idx + i].split(',')
+                if ';' in thread.splitlines()[idx + i]:
+                    emails = thread.splitlines()[idx + i].split(';')
+                else:
+                    emails = thread.splitlines()[idx + i].split(',')
 
-               emails = self.merge(emails)
+                emails = self.merge(emails)
             except IndexError:
                 break
             if all(validate_email(e) for e in emails) != True or time.time() > timeout:
@@ -172,7 +173,6 @@ class EnronParser():
             else:
                 content.append(line)
         return mail, content
-
 
     def process_threads(self, threads):
         result = []
