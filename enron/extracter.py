@@ -42,4 +42,6 @@ class Extracter():
                     if key == email_type and data[key]:
                         result.append(data)
                 elif email_type == 'file':
-                    result.append(data)
+                    if key == 'type':
+                        if data[key] == email_type:
+                            result.append(data)
