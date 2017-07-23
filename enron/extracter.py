@@ -12,21 +12,21 @@ class Extracter():
             print('{} exists.'.format(self.all))
         else:
             email_type = 'file'
-            self.extract(email_type)
+            self.extract(email_type, self.all)
 
     def get_threads_only(self):
         if os.path.exists(self.threads_only):
             print('{} exists.'.format(self.threads_only))
         else:
             email_type = 'is_thread'
-            self.extract(email_type)
+            self.extract(email_type, self.threads_only)
 
-    def extract(self, email_type):
+    def extract(self, email_type, dist):
         result = []
         with open(self.source, 'r') as infile:
             data = ujson.load(infile)
         self.traverse_json(result, data, email_type)
-        with open(self.threads_only, 'w') as outfile:
+        with open(dist, 'w') as outfile:
             ujson.dump(result, outfile)
 
     def traverse_json(self, result, data, email_type):
