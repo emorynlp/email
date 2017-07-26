@@ -23,7 +23,7 @@ bower install
 
 cd -
 
-git subtree push --prefix $1 origin gh-pages
+git subtree push -f --prefix $1 origin gh-pages
 
 echo "Deployed Successfully!"
 
