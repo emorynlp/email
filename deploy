@@ -18,14 +18,13 @@ rm -R _site/
 # Push to gh-pages.
 git add dist
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
-git push -f -q origin gh-pages
-
-git subtree push --prefix $1 origin gh-pages
 
 bower install
 
-echo "Deployed Successfully!"
-
 cd -
+
+git subtree push --prefix $1 origin gh-pages
+
+echo "Deployed Successfully!"
 
 exit 0
