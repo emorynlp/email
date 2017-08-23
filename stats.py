@@ -23,7 +23,7 @@ if __name__ == '__main__':
         else:
             non_thread_count += 1
             non_thread_email_count += len(item['emails'])
-            distribution['1'] = non_thread_count
+            distribution[1] = non_thread_count
 
     print("Number of thread: {}".format(thread_count))
     print("Number of emails with thread: {}".format(thread_email_count))
@@ -31,3 +31,6 @@ if __name__ == '__main__':
     print("Total files: {}".format(thread_count + non_thread_count))
     print("Total emails: {}".format(thread_email_count + non_thread_email_count))
     print("Distribution: {}".format(distribution))
+
+    with open('dis.json', 'w') as out:
+        ujson.dump(distribution, out, indent=2, sort_keys=True)
